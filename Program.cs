@@ -12,14 +12,15 @@
 
             while (!exit)
             {
-                Console.WriteLine("+--------------------+");
-                Console.WriteLine("|     Main Menu      |");
-                Console.WriteLine("| Add Task       [A] |");
-                Console.WriteLine("| Update Task    [U] |");
-                Console.WriteLine("| Delete Task    [D] |");
-                Console.WriteLine("| List Tasks     [R] |");
-                Console.WriteLine("| Close System   [X] |");
-                Console.WriteLine("+--------------------+");
+                Console.WriteLine("+------------------------+");
+                Console.WriteLine("|        Main Menu       |");
+                Console.WriteLine("| Add Task           [A] |");
+                Console.WriteLine("| Update Task        [U] |");
+                Console.WriteLine("| Update Progress    [P] |");
+                Console.WriteLine("| Delete Task        [D] |");
+                Console.WriteLine("| List Tasks         [R] |");
+                Console.WriteLine("| Close System       [X] |");
+                Console.WriteLine("+------------------------+");
 
                 string option = Console.ReadLine();
                 Console.WriteLine("");
@@ -34,15 +35,24 @@
                         Task.UpdateTask();
                     break;
 
+                    case "p":
+                        Task.UpdateProgress();
+                    break;
+
+                    case "d":
+                        Task.DeleteTask();
+                    break;
+
                     case "r":
                         Task.ReadTasks();
                         Console.ReadKey();
-                        break;
+                        Console.WriteLine("");
+                    break;
 
                     case "x":
                         Console.WriteLine("");
                         exit = true;
-                        break;
+                    break;
                 }
             }
 
