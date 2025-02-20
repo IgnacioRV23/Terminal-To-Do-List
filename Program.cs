@@ -1,6 +1,4 @@
-﻿using ConsoleTableExt;
-
-namespace app
+﻿namespace app
 { 
     class Program
     {
@@ -24,12 +22,17 @@ namespace app
                 Console.WriteLine("+--------------------+");
 
                 string option = Console.ReadLine();
+                Console.WriteLine("");
 
                 switch (option.ToLower())
                 {
                     case "a":
                         Task.AddTask();
                     break;
+
+                    case "r":
+                        Task.ReadTasks();
+                        break;
 
                     case "x":
                         Console.WriteLine("");

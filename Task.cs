@@ -1,16 +1,23 @@
-﻿namespace app
+﻿using ConsoleTableExt;
+
+namespace app
 {
     class Task
     {
-        public static List<dynamic> tasks = new List<dynamic>();
+        public static List<List<object>> tasks = new List<List<object>>();
+
+        static int id = 1000;
 
         public static void AddTask()
         {
             Console.WriteLine("Task name: ");
             string taskName = Console.ReadLine();
+            Console.WriteLine("");
 
             Console.WriteLine("Task description: ");
             string taskDescription = Console.ReadLine();
+            Console.WriteLine("");
+
 
             string taskPriority = "";
 
@@ -22,41 +29,31 @@
                 textArt.SuccessMsg("Low       [L]");
 
                 taskPriority = Console.ReadLine();
+                Console.WriteLine("");
             }
 
-            
+            id += 10;
+
             //Method to add new object at list
             tasks.Add(
-                new { 
-                    id = Guid.NewGuid().ToString(),
-                    name = taskName,
-                    description = taskDescription,
-                    priority = taskPriority
+                new List<object> {
+                    id,
+                    taskName,
+                    taskDescription,
+                    taskPriority
                 }
             );
 
-            
+            textArt.SuccessMsg("Task created successfully.");
+            Console.WriteLine("");
         }
 
         public static void ReadTasks()
         {
-            //read task
-            foreach (var task in tasks)
-            {
-                Console.WriteLine(task.id + " name: " + task.name);
-            }
-
-            //var tableData = new List<List<object>>
-            //{
-            //    new List<object>{ "Sakura Yamamoto", "Support Engineer", "London", 46},
-            //    new List<object>{ "Serge Baldwin", "Data Coordinator", "San Francisco", 28, "something else" },
-            //    new List<object>{ "Shad Decker", "Regional Director", "Edinburgh"},
-            //};
-
-            //ConsoleTableBuilder
-            //    .From(tableData)
-            //    .WithTitle("CONTACTS ", ConsoleColor.White, ConsoleColor.DarkGray)
-            //    .WithColumn("Id", "First Name", "Sur Name").ExportAndWriteLine();
+            ConsoleTableBuilder
+                .From(tasks)
+                .WithTitle("Tasks ", ConsoleColor.White, ConsoleColor.DarkGray)
+                .WithColumn("ID", "Name", "Description", "Priority").ExportAndWriteLine();
         }
     }
 }
