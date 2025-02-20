@@ -30,8 +30,13 @@
                         Task.AddTask();
                     break;
 
+                    case "u":
+                        Task.UpdateTask();
+                    break;
+
                     case "r":
                         Task.ReadTasks();
+                        Console.ReadKey();
                         break;
 
                     case "x":
@@ -39,8 +44,6 @@
                         exit = true;
                         break;
                 }
-
-
             }
 
             textArt.Bye();
